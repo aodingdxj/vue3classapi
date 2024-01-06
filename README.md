@@ -2,6 +2,7 @@
 dotnet8 Vue3 template based class api style.
 
 ## Vue3 class api style
+index.ts
 ```typescript
 //import vue3 and vue-class-component
 import { App,ComponentBase } from '../../js/app.js';
@@ -65,6 +66,7 @@ app.mount('#app');
 
 ## C# WebApi
 ### Config UseStaticFiles
+startup.cs
 ```csharp
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
