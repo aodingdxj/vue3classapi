@@ -3,9 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace vue3classapi.Controllers
 {
-    /// <summary>
-    /// 测试接口Books
-    /// </summary>
     [Route("api/[controller]/[action]")]
     public class Hello : Controller
     {
