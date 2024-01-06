@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+
+    <link href="../../js/element-plus/index.css" rel="stylesheet" media="all" />
+
+    <title>Index</title>
+    <style>
+        body {
+            background-color: #f1f4f6
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <index-component></index-component>
+    </div>
+    <template id="vue3template">
+        <div style="padding: 16px;">
+            <el-row :gutter="16">
+                <el-col :span="6">
+                    <el-card class="box-card connectors">
+                        <template #header>
+                            <div class="card-header">
+                                <span style="font-weight:bold;font-size:16px;">Element Tree</span>
+                                <el-button type="primary" icon="Plus" @click="newProcess()" style="margin-left:20px;">New</el-button>
+                            </div>
+                        </template>
+                        <div style="height:78vh;overflow-y:auto">
+                            <el-input v-model="filterText" placeholder="EnterKeywords"></el-input>
+
+                            <el-tree :data="treeData"
+                                     node-key="id"
+                                     highlight-current="true"
+                                     :expand-on-click-node="true"
+                                     :props="defaultProps">
+                                <template #default="{ node, data }">
+                                    <el-icon color="#909399" v-if="data.type=='uwf'"><Files /></el-icon>
+                                    <el-icon color="#67C23A" v-if="data.type=='excel'"><Document /></el-icon>
+                                    <el-icon color="#909399" v-if="data.type=='database'"><List /></el-icon>
+                                    <el-icon color="#909399" v-if="data.type=='webapi'"><Position /></el-icon>
+                                    <span style="padding-left:5px;">{{ node.label }}</span>
+                                </template>
+
+                            </el-tree>
+                        </div>
+
+                    </el-card>
+                </el-col>
+                <el-col :span="18">
+                    <el-card class="box-card">
+                        <template #header>
+                            <div class="card-header">
+                                <span style="font-weight:bold;font-size:16px;" ></span>
+                                <div>
+                                    <el-button icon="Edit" type="warning" @click="access" >Access WebApi</el-button>
+                                    <el-button >Delete</el-button>
+                                </div>
+                            </div>
+                        </template>
+                        <div style="min-height:500px;" v-html="title"></div>
+                    </el-card>
+                </el-col>
+            </el-row>
+
+        </div>
+    </template>
+
+    <script type="module" src="index.js"></script>
+
+</body>
+</html>
